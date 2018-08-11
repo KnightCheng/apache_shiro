@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test2?characterEncoding=utf8&useSSL=false
+    password: "Paradise123"
+    username: root
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis:
+  mapper-locations: mappers/*.xml
+  type-aliases-package: com.example.apache_shiro.model

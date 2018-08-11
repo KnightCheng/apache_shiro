@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.apache_shiro.mapper.UserMapper">
+    <resultMap id="userMap" type="com.example.apache_shiro.model.User">
+        <id property="uid" column="uid"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <collection property="roles" ofType="com.example.apache_shiro.model.Role">
+            <id property="rid" column="rid"/>
+            <result property="name" column="name"/>
+            <collection property="permissions" ofType="com.example.apache_shiro.model.Permission">
+                <id property="pid" column="pid"/>
+                <result property="name" column="name"/>
+                <result property="url" column="url"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="findByUserName" parameterType="string" resultMap="userMap">
+
+    </select>
+
+    <select id="findAll" resultType="User">
+        SELECT * FROM USER
+    </select>
+</mapper>
