@@ -3,7 +3,7 @@ package com.example.apache_shiro.model;
 public class Permission {
     private Integer pid;
 
-    private String name;
+    private String cname;
 
     private String url;
 
@@ -15,12 +15,12 @@ public class Permission {
         this.pid = pid;
     }
 
-    public String getName() {
-        return name;
+    public String getCname() {
+        return cname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCname(String cname) {
+        this.cname = cname;
     }
 
     public String getUrl() {

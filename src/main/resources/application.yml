@@ -4,6 +4,9 @@ spring:
     password: "Paradise123"
     username: root
     type: com.alibaba.druid.pool.DruidDataSource
+  mvc:
+  thymeleaf:
+    cache: false
 mybatis:
   mapper-locations: mappers/*.xml
   type-aliases-package: com.example.apache_shiro.model

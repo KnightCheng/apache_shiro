@@ -12,14 +12,20 @@
             <result property="name" column="name"/>
             <collection property="permissions" ofType="com.example.apache_shiro.model.Permission">
                 <id property="pid" column="pid"/>
-                <result property="name" column="name"/>
+                <result property="cname" column="cname"/>
                 <result property="url" column="url"/>
             </collection>
         </collection>
     </resultMap>
 
     <select id="findByUserName" parameterType="string" resultMap="userMap">
-
+        SELECT u.*,r.*,p.*
+        FROM user u
+          INNER JOIN user_role ur on ur.uid=u.uid
+          INNER JOIN role r on r.rid=ur.rid
+          INNER JOIN permission_role pr on pr.rid=r.rid
+          INNER JOIN permission p on p.pid=pr.pid
+        WHERE u.username = #{username}
     </select>
 
     <select id="findAll" resultType="User">

@@ -36,7 +36,7 @@ public class AuthRealm extends AuthorizingRealm {
                 if(!CollectionUtils.isEmpty(permissionSet)){
                     for (Permission permission:
                          permissionSet) {
-                        permissionList.add(permission.getName());
+                        permissionList.add(permission.getCname());
                     }
                 }
 

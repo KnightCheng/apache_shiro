@@ -31,4 +31,14 @@ public class TestController {
     public List<User> findAll(){
         return userService.findAll();
     }
+
+    @RequestMapping(value = "/test")
+    public User findata(){
+        return userService.findByUserName("admin");
+    }
+
+
+
+
+
 }
