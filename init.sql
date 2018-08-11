@@ -15,7 +15,7 @@ INSERT  INTO permission VALUES('4','query','');
 CREATE TABLE user (
   uid int(11) NOT NULL AUTO_INCREMENT,
   username VARCHAR(255) NOT　NULL DEFAULT '',
-  passwrod VARCHAR(255) NOT　NULL DEFAULT '',
+  password VARCHAR(255) NOT　NULL DEFAULT '',
   PRIMARY KEY (uid)
 )ENGINE=InnoDB DEFAULT CHARSET = utf8;
 
