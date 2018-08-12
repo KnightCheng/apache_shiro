@@ -6,6 +6,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +16,15 @@ public class Test2Controller {
     @RequestMapping("/login")
     public String login(){
         return "login";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(){
+        Subject subject=SecurityUtils.getSubject();
+        if(subject!=null){
+            subject.logout();
+        }
+        return "redirect:/login";
     }
 
     @RequestMapping("/index")
@@ -39,4 +49,23 @@ public class Test2Controller {
         }
 
     }
+
+    @RequestMapping("/admin")
+    public String admin(){
+        return "admin";
+    }
+
+    @RequestMapping("/edit")
+    @ResponseBody
+    public String edit(){
+        return "edit success";
+    }
+
+    @RequestMapping("/unauthorized")
+    public String unauthorized(){
+        return "unauthorized";
+    }
 }
+
+
+

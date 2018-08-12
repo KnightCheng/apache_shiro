@@ -1,5 +1,6 @@
 package com.example.apache_shiro;
 
+import org.apache.shiro.cache.MemoryConstrainedCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -29,6 +30,10 @@ public class ShiroConfigration {
         filterChainDefinitionMap.put("/index","authc");
         filterChainDefinitionMap.put("/login","anon");
         filterChainDefinitionMap.put("/loginUser","anon");
+        filterChainDefinitionMap.put("/admin","roles[admin]");
+        filterChainDefinitionMap.put("/edit","perms[edit]");
+        filterChainDefinitionMap.put("/druid/**","anon");
+        filterChainDefinitionMap.put("/**","user");
         bean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return bean;
     }
@@ -45,6 +50,7 @@ public class ShiroConfigration {
     @Bean("authRealm")
     public AuthRealm authRealm(@Qualifier("credentialMatcher") CredentialMatcher matcher){
         AuthRealm authRealm=new AuthRealm();
+        authRealm.setCacheManager(new MemoryConstrainedCacheManager());
         authRealm.setCredentialsMatcher(matcher);
         return authRealm;
     }
